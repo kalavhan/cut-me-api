@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get '/users/:email/:pwd', to: 'users#signin'
-  post '/users', to: 'users#signup'
+  post '/users/signin', to: 'users#signin'
+  post '/users/signup', to: 'users#signup'
 end

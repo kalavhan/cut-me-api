@@ -4,16 +4,17 @@ RSpec.describe 'Todos API', type: :request do
   # initialize test data 
   let!(:users) { create_list(:user, 10) }
   let(:user_email) { users.first.email }
-  let(:user_pwd) { users.first.password_digest }
+  let(:user_pwd) { users.first.password }
 
   # Test suite for GET /todos/:email
-  describe 'GET /users/:email/:pwd' do
-    before { get "/todos/#{user_email}/#{user_pwd}" }
+  describe 'POST /users/signin' do
+    let(:valid_attributes) { { email: user_email, password: user_pwd } }
 
     context 'when the record exists' do
+      before { post "/users/signin", params: valid_attributes }
       it 'returns the user' do
-        expect(json).not_to be_empty
-        expect(json['email']).to eq(user_email)
+        expect(JSON.parse(response.body)).not_to be_empty
+        expect(JSON.parse(response.body)['email']).to eq(user_email)
       end
 
       it 'returns status code 200' do
@@ -22,7 +23,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the record does not exist' do
-      let(:todo_id) { 100 }
+      before { post "/users/signin", params: { email: 'not@mail.com', password: 'notPwd' } }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
