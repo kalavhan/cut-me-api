@@ -38,13 +38,13 @@ RSpec.describe 'Todos API', type: :request do
   # Test suite for POST /todos
   describe 'POST /users' do
     # valid payload
-    let(:valid_attributes) { { email: 'kal@kal.com', password_digest: 'a123456', first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
+    let(:valid_attributes) { { email: 'kal@kal.com', password: 'a123456', password_confirm: 'a123456', first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
 
     context 'when the request is valid' do
-      before { post '/users', params: valid_attributes }
+      before { post '/users/signup', params: valid_attributes }
 
-      it 'creates a todo' do
-        expect(json['email']).to eq('kal@kal')
+      it 'creates a user' do
+        expect(JSON.parse(response.body)['email']).to eq('kal@kal.com')
       end
 
       it 'returns status code 201' do
@@ -53,7 +53,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the email is invalid' do
-      before { post '/todos', params: { email: 'kal', password_digest: 'a123456', first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal', password: 'a123456', password_confirm: 'a123456', first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -61,12 +61,12 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Please enter a valid email/)
+          .to match(/Validation failed: Email is invalid/)
       end
     end
 
     context 'when the password is invalid' do
-      before { post '/todos', params: { email: 'kal', password_digest: nil, first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal@kal.com', password: nil, password_confirm: nil, first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -74,12 +74,12 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Please enter a valid password/)
+          .to match(/Validation failed: Password can't be blank, Password can't be blank/)
       end
     end
 
     context 'when the name is invalid' do
-      before { post '/todos', params: { email: 'kal', password_digest: 'a123456', first_name: nil, middle_name: 'Josue', last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal@kal.com', password: 'a123456', password_confirm: 'a123456', first_name: nil, middle_name: 'Josue', last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -87,7 +87,7 @@ RSpec.describe 'Todos API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Please enter a valid name/)
+          .to match(/Validation failed: First name can't be blank/)
       end
     end
 

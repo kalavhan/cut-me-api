@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
   def signin
-    @user = User.find_by(email: params["email"])
-    if @user&.authenticate(params["password"])
-      json_response(@user)
-    else
-      json_response('nono');
-    end
+    @user = User.find_by!(email: params["email"]).try(:authenticate, params["password"]);
+    json_response(@user)
   end
 
   def signup
+    @user = User.create!(user_params)
+    json_response(@user, :created)
   end
+
+  private
+
+  def user_params
+    # whitelist params
+    params.permit(:email, :password, :password_confirmation, :first_name, :middle_name, :last_name)
+  end
+
 end
