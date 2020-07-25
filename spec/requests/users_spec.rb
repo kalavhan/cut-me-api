@@ -66,15 +66,15 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the password is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: nil, password_confirm: nil, first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal@kal.com', password: '1', password_confirm: nil, first_name: 'kalavhan', middle_name: 'Josue', last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: Password can't be blank, Password can't be blank/)
+        expect((response.body)+" ")
+          .to match(/(minimum is 6 characters)/)
       end
     end
 
