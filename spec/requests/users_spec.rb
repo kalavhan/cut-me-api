@@ -38,7 +38,7 @@ RSpec.describe 'Todos API', type: :request do
   # Test suite for POST /todos
   describe 'POST /users' do
     # valid payload
-    let(:valid_attributes) { { email: 'kal@kal.com', password: 'a123456', password_confirm: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
+    let(:valid_attributes) { { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
 
     context 'when the request is valid' do
       before { post '/users/signup', params: valid_attributes }
@@ -53,7 +53,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the email is invalid' do
-      before { post '/users/signup', params: { email: 'kal', password: 'a123456', password_confirm: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -66,7 +66,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the password is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: '1', password_confirm: nil, name: 'kalavhan', last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal@kal.com', password: '1', password_confirmation: nil, name: 'kalavhan', last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -79,7 +79,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the name is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: 'a123456', password_confirm: 'a123456', name: nil, last_name: 'Brigido' } }
+      before { post '/users/signup', params: { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: nil, last_name: 'Brigido' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
