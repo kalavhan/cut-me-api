@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def signup
     @user = User.create!(user_params)
-    user_data = {"id" => @user.id, "token" => @user.token}
+    user_data = {"id" => @user.id, "token" => @user.token, "name" => @user.name}
     json_response(user_data, :created)
   end
 

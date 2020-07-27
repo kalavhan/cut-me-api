@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Todos API', type: :request do
   # initialize test data 
   let!(:users) { create_list(:user, 10) }
+  let(:user_id) { users.first.id }
   let(:user_email) { users.first.email }
   let(:user_pwd) { users.first.password }
 
@@ -14,7 +15,7 @@ RSpec.describe 'Todos API', type: :request do
       before { post "/users/signin", params: valid_attributes }
       it 'returns the user' do
         expect(JSON.parse(response.body)).not_to be_empty
-        expect(JSON.parse(response.body)['email']).to eq(user_email)
+        expect(JSON.parse(response.body)['id']).to eq(user_id)
       end
 
       it 'returns status code 200' do
@@ -44,7 +45,7 @@ RSpec.describe 'Todos API', type: :request do
       before { post '/users/signup', params: valid_attributes }
 
       it 'creates a user' do
-        expect(JSON.parse(response.body)['email']).to eq('kal@kal.com')
+        expect(JSON.parse(response.body)['name']).to eq('kalavhan')
       end
 
       it 'returns status code 201' do
