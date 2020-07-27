@@ -3,21 +3,32 @@ require 'rails_helper'
 RSpec.describe 'Todos API', type: :request do
   # initialize test data 
   let!(:barber) { create(:barber) }
-  let(:barber_id) { barber.first.id }
-  let(:services) { create_list (:service, 2, barber: barber) }
+  let(:barber_id) { barber.id }
+  let(:services) { create_list(:service, 2, barber: barber) }
   let(:service) { services.first }
   # get '/barbers/index', to: 'barbers#index'
   # get '/barbers/show/:id', to: 'barbers#show'
 
   # Test suite for GET /barbers/index
   describe 'GET /barbers/index' do
-    let(:valid_attributes) { { email: user_email, password: user_pwd } }
-
     context 'when the record exists' do
-      before { post "/users/signin", params: valid_attributes }
-      it 'returns the user' do
+      before { get "/barbers/index" }
+      it 'returns all the barbers' do
         expect(JSON.parse(response.body)).not_to be_empty
-        expect(JSON.parse(response.body)['id']).to eq(user_id)
+        expect(JSON.parse(response.body)[0]["id"]).to eq(barber_id)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+  describe 'GET /barbers/show/:id' do
+    context 'when the record exists' do
+      before { get "/barbers/show/#{barber_id}" }
+      it 'returns the existing barber' do
+        expect(JSON.parse(response.body)).not_to be_empty
+        expect(JSON.parse(response.body)["id"]).to eq(barber_id)
       end
 
       it 'returns status code 200' do
@@ -25,74 +36,15 @@ RSpec.describe 'Todos API', type: :request do
       end
     end
 
-    context 'when the record does not exist' do
-      before { post "/users/signin", params: { email: 'not@mail.com', password: 'notPwd' } }
-
+    context 'when the record does not exists' do
+      before { get "/barbers/show/23" }
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find User/)
+        expect(response.body).to match(/Couldn't find Barber/)
       end
     end
-  end
-
-  # Test suite for POST /todos
-  describe 'POST /users' do
-    # valid payload
-    let(:valid_attributes) { { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
-
-    context 'when the request is valid' do
-      before { post '/users/signup', params: valid_attributes }
-
-      it 'creates a user' do
-        expect(JSON.parse(response.body)['name']).to eq('kalavhan')
-      end
-
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
-      end
-    end
-
-    context 'when the email is invalid' do
-      before { post '/users/signup', params: { email: 'kal', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: Email is invalid/)
-      end
-    end
-
-    context 'when the password is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: '1', password_confirmation: nil, name: 'kalavhan', last_name: 'Brigido' } }
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect((response.body)+" ")
-          .to match(/(minimum is 6 characters)/)
-      end
-    end
-
-    context 'when the name is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: nil, last_name: 'Brigido' } }
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect(response.body)
-          .to match(/Validation failed: Name can't be blank/)
-      end
-    end
-
   end
 end
