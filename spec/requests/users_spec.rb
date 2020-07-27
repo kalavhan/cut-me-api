@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Todos API', type: :request do
-  # initialize test data 
   let!(:users) { create_list(:user, 10) }
   let(:user_id) { users.first.id }
   let(:user_email) { users.first.email }
   let(:user_pwd) { users.first.password }
 
-  # Test suite for GET /todos/:email
   describe 'POST /users/signin' do
     let(:valid_attributes) { { email: user_email, password: user_pwd } }
 
@@ -36,9 +34,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
-  # Test suite for POST /todos
   describe 'POST /users' do
-    # valid payload
     let(:valid_attributes) { { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
 
     context 'when the request is valid' do
