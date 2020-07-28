@@ -6,6 +6,6 @@ class BarbersController < ApplicationController
 
   def show
     @barber = Barber.eager_load(:services).find_by!(id: params[:id])
-    json_response(@barber)
+    render json: @barber, :include => [:services]
   end
 end
