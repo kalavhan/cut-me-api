@@ -5,7 +5,10 @@ class BarbersController < ApplicationController
   end
 
   def show
-    @barber = Barber.includes(:services).find_by!(id: params[:id])
+    @barber = Barber.find_by!(id: params[:id])
+    if (@barber)
+      @barber = @barber.services
+    end
     json_response(@barber)
   end
 end
