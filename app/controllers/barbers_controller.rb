@@ -5,7 +5,7 @@ class BarbersController < ApplicationController
   end
 
   def show
-    @barber = Barber.includes(:services).find_by!(id: params[:id])
+    @barber = Barber.eager_load(:services).find_by!(id: params[:id])
     json_response(@barber)
   end
 end
