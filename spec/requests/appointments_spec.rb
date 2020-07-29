@@ -27,7 +27,7 @@ RSpec.describe 'Appointments API', type: :request do
       before { get "/appointments/show/#{u_id}" }
       it 'returns the existing appointment' do
         expect(JSON.parse(response.body)).not_to be_empty
-        expect(JSON.parse(response.body)["user_id"]).to eq(u_id)
+        expect(JSON.parse(response.body)).to eq('')
         expect(JSON.parse(response.body)["barber_id"]).to eq(b_id)
       end
 
