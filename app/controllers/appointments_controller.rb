@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = User.select(:id).where(id: params[:id]).eager_load(:appointments => :barber)
+    @appointment = User.eager_load(:appointments => :barber).find_by!(id: params[:id])
     render json: @appointment, :include => {:appointments => {:include => {:barber => {:only =>[:name, :last_name, :id]}}, :only => [:appt_date]}}, :only => [:id]
   end
 
