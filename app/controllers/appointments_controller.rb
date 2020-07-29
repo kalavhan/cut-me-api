@@ -4,6 +4,11 @@ class AppointmentsController < ApplicationController
     json_response(@appointment, :created)
   end
 
+  def show
+    @appointment = Appointment.eager_load(:user, :barber).find_by!(user_id: params[:id])
+    render json: @barber, :include => [:user, :barber]
+  end
+
   private
 
   def appointment_params

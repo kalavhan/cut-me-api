@@ -3,13 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Appointments API', type: :request do
   # initialize test data 
   let!(:barber) { create(:barber) }
+  let!(:user) { create(:user) }
   let(:barber_id) { barber.id }
-  let(:services) { create_list(:service, 2, barber: barber) }
-  let(:service) { services.first }
-  # get '/barbers/index', to: 'barbers#index'
-  # get '/barbers/show/:id', to: 'barbers#show'
+  let(:user_id) { user.id }
+  let!(:appointments) { create_list(:appointments, 2, barber: barber, user: user) }
+  let(:appointment) { appointments.first }
 
-  # Test suite for GET /barbers/index
   describe 'GET /barbers/index' do
     context 'when the record exists' do
       before { get "/barbers/index" }
