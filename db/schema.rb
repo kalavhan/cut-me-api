@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 2020_07_29_061938) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.date "appt_date"
-    t.time "appt_time"
+    t.datetime "appt_date"
     t.integer "barber_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
