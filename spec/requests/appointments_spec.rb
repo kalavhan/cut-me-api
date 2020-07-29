@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Barbers API', type: :request do
+RSpec.describe 'Appointments API', type: :request do
   # initialize test data 
   let!(:barber) { create(:barber) }
   let(:barber_id) { barber.id }
