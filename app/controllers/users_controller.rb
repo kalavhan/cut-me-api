@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def signin
     @user = User.find_by!(email: params["email"]).try(:authenticate, params["password"]);
-    user_data = {"id" => @user.id, "token" => @user.token}
-    json_response(user_data)
+    render json: @user, :only => [:id, :token]
+
   end
 
   def signup
