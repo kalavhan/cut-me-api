@@ -4,4 +4,5 @@ class Barber < ApplicationRecord
   validates :role, presence: true, length: { maximum: 50 }
   validates :image, presence: true, length: { minimum: 2 }
   has_many :services
+  has_many :appointments
 end

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, presence:true, length: { minimum: 6 }
   validates :name, presence:true, length: { maximum: 100 }
   validates :last_name, presence:true, length: { maximum: 40 }
+  has_many :appointments
   has_secure_password
 
   def remember
