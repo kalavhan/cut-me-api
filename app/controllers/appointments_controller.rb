@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   def add
-    @appointment = Appointment.create!(user_params)
+    @appointment = Appointment.create!(appointment_params)
     json_response(@appointment, :created)
   end
 

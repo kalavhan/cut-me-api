@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Appointments API', type: :request do
-  # initialize test data 
   let!(:barber) { create(:barber) }
   let!(:user) { create(:user) }
-  let(:barber_id) { barber.id }
-  let(:user_id) { user.id }
-  let!(:appointments) { create_list(:appointments, 2, barber: barber, user: user) }
+  let(:b_id) { barber.id }
+  let(:u_id) { user.id }
+  let!(:appointments) { create_list(:appointment, 2, barber: barber, user: user) }
   let(:appointment) { appointments.first }
 
-  describe 'GET /barbers/index' do
-    context 'when the record exists' do
-      before { get "/barbers/index" }
-      it 'returns all the barbers' do
+  describe 'POST /appointments/add' do
+    context 'Add a new record to appointments table' do
+      before { post '/appointments/add', params: { appt_date: '2018/07/20', appt_time: '13:15', barber_id: b_id, user_id: u_id } }
+      it 'returns the appointment' do
         expect(JSON.parse(response.body)).not_to be_empty
         expect(JSON.parse(response.body)[0]["id"]).to eq(barber_id)
       end
