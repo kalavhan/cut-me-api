@@ -10,7 +10,7 @@ RSpec.describe 'Users API', type: :request do
     let(:valid_attributes) { { email: user_email, password: user_pwd } }
 
     context 'when the record exists' do
-      before { post "/users/signin", params: valid_attributes }
+      before { post '/users/signin', params: valid_attributes }
       it 'returns the user' do
         expect(JSON.parse(response.body)).not_to be_empty
         expect(JSON.parse(response.body)['id']).to eq(user_id)
@@ -22,7 +22,7 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when the record does not exist' do
-      before { post "/users/signin", params: { email: 'not@mail.com', password: 'notPwd' } }
+      before { post '/users/signin', params: { email: 'not@mail.com', password: 'notPwd' } }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -35,7 +35,13 @@ RSpec.describe 'Users API', type: :request do
   end
 
   describe 'POST /users' do
-    let(:valid_attributes) { { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
+    let(:valid_attributes) do
+      { email: 'kal@kal.com',
+        password: 'a123456',
+        password_confirmation: 'a123456',
+        name: 'kalavhan',
+        last_name: 'Brigido' }
+    end
 
     context 'when the request is valid' do
       before { post '/users/signup', params: valid_attributes }
@@ -50,7 +56,15 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when the email is invalid' do
-      before { post '/users/signup', params: { email: 'kal', password: 'a123456', password_confirmation: 'a123456', name: 'kalavhan', last_name: 'Brigido' } }
+      before do
+        post '/users/signup', params: {
+          email: 'kal',
+          password: 'a123456',
+          password_confirmation: 'a123456',
+          name: 'kalavhan',
+          last_name: 'Brigido'
+        }
+      end
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -63,20 +77,36 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when the password is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: '1', password_confirmation: nil, name: 'kalavhan', last_name: 'Brigido' } }
+      before do
+        post '/users/signup', params: {
+          email: 'kal@kal.com',
+          password: '1',
+          password_confirmation: nil,
+          name: 'kalavhan',
+          last_name: 'Brigido'
+        }
+      end
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect((response.body)+" ")
+        expect(response.body + ' ')
           .to match(/(minimum is 6 characters)/)
       end
     end
 
     context 'when the name is invalid' do
-      before { post '/users/signup', params: { email: 'kal@kal.com', password: 'a123456', password_confirmation: 'a123456', name: nil, last_name: 'Brigido' } }
+      before do
+        post '/users/signup', params: {
+          email: 'kal@kal.com',
+          password: 'a123456',
+          password_confirmation: 'a123456',
+          name: nil,
+          last_name: 'Brigido'
+        }
+      end
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -87,6 +117,5 @@ RSpec.describe 'Users API', type: :request do
           .to match(/Validation failed: Name can't be blank/)
       end
     end
-
   end
 end

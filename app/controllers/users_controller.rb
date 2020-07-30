@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   def signin
-    @user = User.find_by!(email: params["email"]).try(:authenticate, params["password"]);
-    render json: @user, :only => [:id, :token]
-
+    @user = User.find_by!(email: params['email']).try(:authenticate, params['password'])
+    render json: @user, only: %i[id token]
   end
 
   def signup
     @user = User.create!(user_params)
-    user_data = {"id" => @user.id, "token" => @user.token, "name" => @user.name}
+    user_data = { 'id' => @user.id, 'token' => @user.token, 'name' => @user.name }
     json_response(user_data, :created)
   end
 
@@ -16,5 +15,4 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:email, :password, :password_confirmation, :name, :last_name)
   end
-
 end
