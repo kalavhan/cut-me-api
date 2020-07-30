@@ -1,24 +1,75 @@
-# README
+[![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
+![issues](https://img.shields.io/github/issues/kalavhan/restaurant-page)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project: Cut me API
 
-Things you may want to cover:
+This is the API used for the project CUT ME a tablet web application for barber shops
 
-* Ruby version
+## Built Wit
+- Ruby
+- Ruby On Rails
 
-* System dependencies
+## Live Demo of the APP using the API
+[Live link](https://cut-me-barbershop.netlify.app/)
 
-* Configuration
+## FRONT-END App Respository
+[Cut me API](https://github.com/kalavhan/cut-me/)
 
-* Database creation
+## Prerequisites
+- Ruby
+- Ruby on Rails
 
-* Database initialization
+## Functionalities 
+- Create a new user
+- Authenticate user on Log In
+- Get Barbers list
+- Get Barber details
+- Get appointments of user
 
-* How to run the test suite
+## Setup
 
-* Services (job queues, cache servers, search engines, etc.)
+Use the [git](https://git-scm.com/downloads) to clone the project to your local machine.
+```sh
+$ git clone https://github.com/kalavhan/cut-me-api.git
+```
 
-* Deployment instructions
+Navigate to the extracted folder
+```sh 
+cd cut-me
+```
 
-* ...
+Install the dependencies and modules
+```sh
+$ bundle install
+```
+
+### Test
+```sh
+$ bundle exec rspec
+```
+
+## Author
+
+👤 **Josue Brigido**
+
+[Github](https://github.com/kalavhan) | [Twitter](https://twitter.com/kalavhan) | [LinkedIn](https://linkedin.com/in/kalavhan)
+
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgements
+- [Microverse](https://www.microverse.org/)
+- [The Odin Project](https://www.theodinproject.com/)
+- [Freecodecamp](http://freecodecamp.org/)
+
+## 📝 License
+
+This project is licensed under MIT license - see [LICENSE](/LICENSE) for more details.
+
