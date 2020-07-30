@@ -13,7 +13,7 @@ This is the API used for the project CUT ME a tablet web application for barber 
 [Live link](https://cut-me-barbershop.netlify.app/)
 
 ## FRONT-END App Respository
-[Cut me API](https://github.com/kalavhan/cut-me/)
+[Cut me](https://github.com/kalavhan/cut-me/)
 
 ## Prerequisites
 - Ruby
@@ -43,7 +43,7 @@ Install the dependencies and modules
 $ bundle install
 ```
 
-### Test
+### Tests
 ```sh
 $ bundle exec rspec
 ```
