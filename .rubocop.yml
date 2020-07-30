@@ -40,6 +40,12 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/HashEachMethods:
+  enabled: false
+Style/HashTransformKeys:
+  enabled: false
+Style/HashTransformValues:
+  enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
@@ -48,3 +54,8 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+
+Lint/RaiseException:
+  enabled: false
+Lint/StructNewOverride:
+  enabled: false
