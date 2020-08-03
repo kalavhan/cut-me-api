@@ -25,5 +25,5 @@ barber4.services.create(title: 'Dying hair', price: '50.00')
 barber4.services.create(title: 'Style designer', price: '120.00')
 
 
-barber5 = Barber.create(name: 'Ross', last_name: 'Geller', role: 'Barber Apprntice', image: 'https://i.ibb.co/smNtFsb/barber5.png')
+barber5 = Barber.create(name: 'Ross', last_name: 'Geller', role: 'Barber Apprentice', image: 'https://i.ibb.co/smNtFsb/barber5.png')
 barber5.services.create(title: 'Shavign and trimming beards', price: '10.00')
