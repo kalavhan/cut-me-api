@@ -24,7 +24,7 @@ RSpec.describe 'Barbers API', type: :request do
       before { get "/barbers/show/#{barber_id}" }
       it 'returns the existing barber' do
         expect(JSON.parse(response.body)).not_to be_empty
-        expect(JSON.parse(response.body)).to eq(service)
+        expect(JSON.parse(response.body)['id']).to eq(barber_id)
       end
 
       it 'returns status code 200' do
