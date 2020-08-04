@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_07_29_961900) do
     t.integer "barber_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.money "price"
+    t.decimal "price", precision: 5, scale: 2
   end
 
   create_table "users", force: :cascade do |t|

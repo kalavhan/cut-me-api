@@ -3,7 +3,7 @@ class CreateServices < ActiveRecord::Migration[6.0]
     create_table :services do |t|
       t.string :title
       t.integer :barber_id
-      t.money :price
+      t.decimal :price, precision: 5, scale:2
       t.timestamps
     end
   end
