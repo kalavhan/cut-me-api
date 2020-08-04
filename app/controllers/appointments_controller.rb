@@ -6,12 +6,10 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = User.eager_load(appointments: :barber).find_by!(id: params[:id])
-    json_response(@appointment, {
-      appointments: {
-        include: { barber: { only: %i[name last_name id] } },
-        only: %i[id appt_date]
-      }
-    }, [:id])
+    json_response(@appointment, { appointments: {
+                    include: { barber: { only: %i[name last_name id] } },
+                    only: %i[id appt_date]
+                  } }, [:id])
   end
 
   private

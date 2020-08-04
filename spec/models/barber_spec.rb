@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Barber, type: :model do
   it { should validate_presence_of(:name) }
-  it { should allow_value("Anthony Edward").for(:name) }
+  it { should allow_value('Anthony Edward').for(:name) }
   it { should_not allow_value((0..100).map { ('a'..'z').to_a[rand(26)] }.join).for(:name) }
 
   it { should validate_presence_of(:last_name) }
   it { should allow_value('Stark').for(:last_name) }
-  it { should_not allow_value((0..40).map { ('a'..'z').to_a[rand(26)] }.join).for(:last_name)}
+  it { should_not allow_value((0..40).map { ('a'..'z').to_a[rand(26)] }.join).for(:last_name) }
 
   it { should validate_presence_of(:role) }
   it { should allow_value('Master Barber').for(:role) }
