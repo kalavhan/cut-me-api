@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 barber1 = Barber.create(name: 'Joey', last_name: 'Tribbiany', role: 'Master Barber', image: 'https://i.ibb.co/mysq8vD/barber1.png')
-barber1.services.create(title: 'Cutting and trimming hair', price: '$ 24.00')
+barber1.services.create(title: 'Cutting and trimming hair', price: 24.00)
 barber1.services.create(title: 'Shavign and trimming beards', price: 12.00)
 barber1.services.create(title: 'Dying hair', price: 52.00)
 
