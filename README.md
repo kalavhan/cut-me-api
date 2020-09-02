@@ -1,23 +1,63 @@
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 ![issues](https://img.shields.io/github/issues/kalavhan/restaurant-page)
+<br />
+<p align="center">
+ 
+  <h3 align="center">Cut me API</h3>
+  <p align="center">
+    Repository for the Ruby on Rails back-end of Cut me, an appointments web application
+    <br />
+    <a href="#table-of-contents"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    ·
+    <a href="https://cut-me-barbershop.netlify.app/">Live version</a>
+    ·
+    <a href="https://github.com/kalavhan/cut-me-api/issues">Report Bug</a>
+  </p>
+</p>
 
-# Project: Cut me API
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-This is the API used for the project CUT ME a tablet web application for barber shops
+* [About the Project](#about-the-project)
+  * [Functions](#functions)
+  * [Built With](#built-with)
+* [Prerequisites](#prerequisites)
+* [Setup](#setup)
+* [Tests](#tests)
+* [Live Demo](#live-demo)
+* [API Repository](#api-repository)
+* [Authors](#authors)
+* [Acknowledgments](#acknowledgments)
+* [License](#license)
 
-## Built Wit
+<!-- ABOUT THE PROJECT -->
+## About The Project
+This is the back-end for Cut-me, a Ruby on Rails API that handles the requests for the database.
+
+## Functions
+ - Create a new user
+ - Verify login parameters
+ - Get a list of the barbers
+ - Get the details of an specific barber
+ - Make an appointment
+ - Get a list with the appointments made with an specific account
+
+## Built With
 - Ruby
 - Ruby On Rails
 
-## Live Demo of the APP using the API
+## Prerequisites
+ - Git
+ - Ruby
+ - Ruby on Rails
+
+## Live Demo
 [Live link](https://cut-me-barbershop.netlify.app/)
 
-## FRONT-END App Respository
+## FRONT-END App
 [Cut me](https://github.com/kalavhan/cut-me/)
-
-## Prerequisites
-- Ruby
-- Ruby on Rails
 
 ## Functionalities 
 - Create a new user
@@ -35,15 +75,15 @@ $ git clone https://github.com/kalavhan/cut-me-api.git
 
 Navigate to the extracted folder
 ```sh 
-cd cut-me
+cd cut-me-api
 ```
 
-Install the dependencies and modules
+Install and update dependencies and modules
 ```sh
 $ bundle install
 ```
 
-### Tests
+## Tests
 ```sh
 $ bundle exec rspec
 ```
@@ -53,8 +93,6 @@ $ bundle exec rspec
 👤 **Josue Brigido**
 
 [Github](https://github.com/kalavhan) | [Twitter](https://twitter.com/kalavhan) | [LinkedIn](https://linkedin.com/in/kalavhan)
-
-
 
 ## 🤝 Contributing
 
@@ -66,8 +104,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgements
 - [Microverse](https://www.microverse.org/)
-- [The Odin Project](https://www.theodinproject.com/)
-- [Freecodecamp](http://freecodecamp.org/)
 
 ## 📝 License
 
