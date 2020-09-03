@@ -21,22 +21,23 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Functions](#functions)
+  * [Features](#features)
   * [Built With](#built-with)
-* [Prerequisites](#prerequisites)
-* [Setup](#setup)
-* [Tests](#tests)
+* [Installation](#installation)
+  * [Prerequisites](#prerequisites)
+  * [Setup](#setup)
+  * [Tests](#tests)
 * [Live Demo](#live-demo)
-* [API Repository](#api-repository)
-* [Authors](#authors)
-* [Acknowledgments](#acknowledgments)
+* [Front-end Repository](#front-end-repository)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 * [License](#license)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 This is the back-end for Cut-me, a Ruby on Rails API that handles the requests for the database.
 
-## Functions
+## Features
  - Create a new user
  - Verify login parameters
  - Get a list of the barbers
@@ -48,47 +49,42 @@ This is the back-end for Cut-me, a Ruby on Rails API that handles the requests f
 - Ruby
 - Ruby On Rails
 
-## Prerequisites
+## Installation
+
+### Prerequisites
  - Git
  - Ruby
  - Ruby on Rails
 
+### Setup
+
+  Use the [git](https://git-scm.com/downloads) to clone the project to your local machine.
+  ```sh
+  $ git clone https://github.com/kalavhan/cut-me-api.git
+  ```
+
+  Navigate to the extracted folder
+  ```sh 
+  cd cut-me-api
+  ```
+
+  Install and update dependencies and modules
+  ```sh
+  $ bundle install
+  ```
+
+### Tests
+  ```sh
+  $ bundle exec rspec
+  ```
+
 ## Live Demo
 [Live link](https://cut-me-barbershop.netlify.app/)
 
-## FRONT-END App
+## Front-end repository
 [Cut me](https://github.com/kalavhan/cut-me/)
 
-## Functionalities 
-- Create a new user
-- Authenticate user on Log In
-- Get Barbers list
-- Get Barber details
-- Get appointments of user
-
-## Setup
-
-Use the [git](https://git-scm.com/downloads) to clone the project to your local machine.
-```sh
-$ git clone https://github.com/kalavhan/cut-me-api.git
-```
-
-Navigate to the extracted folder
-```sh 
-cd cut-me-api
-```
-
-Install and update dependencies and modules
-```sh
-$ bundle install
-```
-
-## Tests
-```sh
-$ bundle exec rspec
-```
-
-## Author
+## Contact
 
 👤 **Josue Brigido**
 
